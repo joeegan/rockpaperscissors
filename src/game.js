@@ -5,7 +5,7 @@
  * @param {String} players guess, must be chosen from the choices Array.
  */
 function rockPaperScissors(guess) {
-   var index = rps.choices.indexOf(guess);
+   var index = rockPaperScissors.choices.indexOf(guess);
    var computerIndex = Math.random() * 3 | 0;
    var result = (3 + index - computerIndex) % 3;
 
