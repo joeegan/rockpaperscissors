@@ -10,7 +10,7 @@ function rockPaperScissors(guess) {
    var result = (3 + index - computerIndex) % 3;
 
    console.log('Player chooses ', guess);
-   console.log('Computer chooses ', rps.choices[computerIndex]);
+   console.log('Computer chooses ', rockPaperScissors.choices[computerIndex]);
    
    if (result === 0) {
       console.log('Draw!');
