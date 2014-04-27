@@ -2,12 +2,12 @@
  * Basic Rock / Paper / Scissors game.
  *
  * @main rockPaperScissors
- * @param {String} players guess, must be chosen from the choices Array.
+ * @param {String} humanChoice Players guess, must be chosen from the choices Array.
  */
 function rockPaperScissors(humanChoice) {
-   console.log('Player chooses ', humanChoice);
+   console.log('Player chooses', humanChoice);
    var computerChoice = rockPaperScissors.generateComputerChoice();
-   console.log('Computer chooses ', computerChoice);
+   console.log('Computer chooses', computerChoice);
    return rockPaperScissors.judge(humanChoice, computerChoice);
 }
 
@@ -20,12 +20,14 @@ rockPaperScissors.generateComputerChoice = function() {
 
 /**
  * For readable testing.
- * @param humanChoice
- * @param computerChoice
+ * @param {String} humanChoice
+ * @param {String} computerChoice
  */
 rockPaperScissors.judge = function(humanChoice, computerChoice){
    var humanIndex = rockPaperScissors.choices.indexOf(humanChoice);
-   if (humanIndex == -1) throw Error('Player must supply a guess of ' + rockPaperScissors.choices);
+   if (humanIndex == -1) {
+      throw Error('Player must supply a guess of ' + rockPaperScissors.choices);
+   }
    var computerIndex = rockPaperScissors.choices.indexOf(computerChoice);
    var resultIndex = (3 + humanIndex - computerIndex) % 3;
    return rockPaperScissors.results[Object.keys(rockPaperScissors.results)[resultIndex]];
