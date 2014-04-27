@@ -4,6 +4,10 @@ describe('rock paper scissors', function() {
       expect(function(){rockPaperScissors.judge('foo', 'rock');}).toThrow();
    });
 
+   it ('should generate a legal choice', function(){
+      expect(rockPaperScissors.generateComputerChoice()).toMatchOneOf(rockPaperScissors.choices);
+   });
+
    it('should award paper over rock', function() {
       expect(rockPaperScissors.judge('paper', 'rock')).toBe(rockPaperScissors.results.HUMAN_WIN);
       expect(rockPaperScissors.judge('rock', 'paper')).toBe(rockPaperScissors.results.COMPUTER_WIN);
@@ -23,6 +27,20 @@ describe('rock paper scissors', function() {
       expect(rockPaperScissors.judge('scissors', 'scissors')).toBe(rockPaperScissors.results.DRAW);
       expect(rockPaperScissors.judge('paper', 'paper')).toBe(rockPaperScissors.results.DRAW);
       expect(rockPaperScissors.judge('rock', 'rock')).toBe(rockPaperScissors.results.DRAW);
+   });
+
+   beforeEach(function() {
+      this.addMatchers({
+         toMatchOneOf: function() {
+            return {
+               compare: function(str, arr) {
+                  return {
+                     pass: (arr.indexOf(str) > -1)
+                  };
+               }
+            };
+         }
+      });
    });
 
 });
